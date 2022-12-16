@@ -1,0 +1,16 @@
+{
+    "name": "small-logging-server-node",
+    "version": "0.3.0",
+    "description": "This is a logging server for user interface studies",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "node test.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "mongoose": "^6.8.0"
+    },
+    "license": "MIT"
+}
