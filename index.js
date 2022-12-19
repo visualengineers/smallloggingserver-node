@@ -1,62 +1,122 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const expressAccessToken = require('express-access-token');
 const cors = require('cors');
 const ipfilter = require('express-ipfilter').IpFilter
 const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
 const path = __dirname + '/views/';
+const { Parser } = require('json2csv');
+const Model = require('./models/model.js');
+
+const blacklist = ['78.54.214.87'];
+
+const dbUrl = process.env.ENV == 'production' 
+    ? 'mongodb://mongodb:27017/eventLogs'
+    : 'mongodb://localhost:27017/eventLogs';
 
 mongoose.set('strictQuery', true);
 
 // Connect to MongoDB
-mongoose.connect('mongodb://mongodb:27017/eventLogs', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-
-// Define a schema for event logs
-const eventLogSchema = new mongoose.Schema({
-  eventName: String,
-  timestamp: Number
-})
-
-// Create a model for event logs
-const EventLog = mongoose.model('EventLog', eventLogSchema)
+mongoose.connect(dbUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 // Configure CORS options
 const corsOptions = {
-  origin: ['http://itv21.informatik.htw-dresden.de:3000/', 'http://localhost:3000'],
-  allowedHeaders: ['Content-Type']
-}
+    origin: ['http://itv21.informatik.htw-dresden.de:3000/', 'http://localhost:3000'],
+    allowedHeaders: ['Content-Type']
+};
+
+const accessTokens = process.env.ENV == 'production' 
+    ? [ process.env.ACCESS_TOKEN ]
+    : [ "123" ];
+const firewall = (req, res, next) => {
+    const authorized = accessTokens.includes(req.accessToken);
+    if(!authorized) return res.status(403).send('Forbidden');
+    next();
+};
 
 // Use cors middleware
 app.use(cors(corsOptions));
 
+app.use(bodyParser.json({ limit: '200kb' }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+
 app.use(express.json()); // Use express.json() middleware to parse JSON bodies
 
-app.get("/sharks",function(req,res){
-    res.sendFile(path + "sharks.html");
+app.use(ipfilter(blacklist));
+
+app.set('view engine', 'ejs');
+
+app.post('/log', expressAccessToken,
+    firewall,
+    (req, res) => {
+    if (!req.is('application/json')) {
+        // Send error here
+        res.sendStatus(400);
+    } else {
+        // Create a new event log
+        const eventLog = new Model(req.body);
+
+        // Save the event log to the database
+        eventLog.save()
+            .then(() => {
+                res.send('Event data logged')
+            })
+            .catch(err => {
+                res.status(500).send(err)
+            });
+    }
 });
-  
 
-app.post('/log', (req, res) => {
-  const { eventName, timestamp } = req.body
-  // Create a new event log
-  const eventLog = new EventLog({
-    eventName,
-    timestamp
-  })
+app.get('/display',
+    async (req, res) => {
+    try {
+        const allLogs = await Model.find().lean();
+        const results = { 
+            'results': (allLogs) ? allLogs : null
+          };
+        res.render('logs', results);
+    } catch (error) {
+        console.log('error:', error.message);
+        res.status(500).send(error.message);
+    }
+});
 
-  // Save the event log to the database
-  eventLog.save()
-    .then(() => {
-      res.send('Event data logged')
-    })
-    .catch(err => {
-      res.status(500).send(err)
-    })
+app.get('/export', async (req, res) => {
+    try {
+        const fields = Object.keys(Model.schema.obj);
+        const opts = { fields };
+        const json2csv = new Parser(opts);
+        const allLogs = await Model.find({});
+
+        let data = json2csv.parse(allLogs);
+        res.attachment('logging_data.csv');
+        res.status(200).send(data);
+    } catch (error) {
+        console.log('error:', error.message);
+        res.status(500).send(error.message);
+    }
+});
+
+app.get('/schema', async (req, res) => {
+    try {
+        const fields = Object.keys(Model.schema.obj);
+        const results = { 
+            'results': fields
+          };
+        res.render('schema', results);
+    } catch (error) {
+        console.log('error:', error.message);
+        res.status(500).send(error.message);
+    }
 });
 
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`)
+    console.log(`Listening on port ${port}`)
 });

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<div class="container">
+<h2>Database Results</h2>
+
+<ul>
+    <% results.forEach(function(r) { %>
+        <li>
+        <% for (let key in r) { %>
+            <%= key %>: <%= r[key] %> - 
+        <% } %>
+        </li>
+    <% }); %>
+</ul>
+
+</div>
+
+</body>
+</html>
