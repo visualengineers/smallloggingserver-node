@@ -21,7 +21,7 @@ See: [express-access-token](https://www.npmjs.com/package/express-access-token)
 ## Deploy Application using Docker
 
 ```bash
-git pull https://github.com/visualengineers/smallloggingserver-node.git
+git clone https://github.com/visualengineers/smallloggingserver-node.git
 ENV="production" ACCESS_TOKEN="your_token" USE_MODEL="your_model" docker-compose up -d --build
 ```
 
