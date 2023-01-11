@@ -27,8 +27,7 @@ mongoose.connect(dbUrl, {
 
 // Configure CORS options
 const corsOptions = {
-    origin: ['http://itv21.informatik.htw-dresden.de:3000/', 'http://localhost:3000'],
-    allowedHeaders: ['Content-Type']
+    origin: ['http://itv21.informatik.htw-dresden.de:3000/', 'http://localhost:3000']
 };
 
 const accessTokens = process.env.ENV == 'production' 
@@ -53,6 +52,7 @@ app.use(ipfilter(blacklist));
 
 app.set('view engine', 'ejs');
 
+app.options('/log');
 app.post('/log', expressAccessToken,
     firewall,
     (req, res) => {
