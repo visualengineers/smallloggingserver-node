@@ -1,0 +1,20 @@
+{
+    "userID": "Name",
+    "timestamp": 123,
+    "imageID": 0,
+    "interaction": false,
+    "q1SliS": 0,
+    "q2EnjS": 0,
+    "q2LikS": 0,
+    "q2PleS": 0,
+    "q2NicS": 0,
+    "q2AppS": 0,
+    "q3BeaS": 0,
+    "q3AttS": 0,
+    "q3PleS": 0,
+    "q3NicS": 0,
+    "q3LikS": 0,
+    "age": 0,
+    "gender": "Gender",
+    "degree": "Degree"
+}
