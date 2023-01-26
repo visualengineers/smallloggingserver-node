@@ -9,7 +9,7 @@ const app = express();
 const port = 3000;
 const path = __dirname + '/views/';
 const { Parser } = require('json2csv');
-const Model = require('./models/model.js');
+const Models = require('./models/model.js');
 
 const blacklist = ['78.54.214.87'];
 
@@ -53,7 +53,7 @@ app.use(ipfilter(blacklist));
 
 app.set('view engine', 'ejs');
 
-app.post('/log', expressAccessToken,
+app.post('/log/:schema', expressAccessToken,
     firewall,
     (req, res) => {
     if (!req.is('application/json')) {
@@ -61,7 +61,7 @@ app.post('/log', expressAccessToken,
         res.sendStatus(400);
     } else {
         // Create a new event log
-        const eventLog = new Model(req.body);
+        const eventLog = new Models[req.params["schema"]](req.body);
 
         // Save the event log to the database
         eventLog.save()
@@ -74,10 +74,10 @@ app.post('/log', expressAccessToken,
     }
 });
 
-app.get('/display',
+app.get('/display/:schema',
     async (req, res) => {
     try {
-        const allLogs = await Model.find().lean();
+        const allLogs = await Models[req.params["schema"]].find().lean();
         const results = { 
             'results': (allLogs) ? allLogs : null
           };
@@ -88,12 +88,12 @@ app.get('/display',
     }
 });
 
-app.get('/export', async (req, res) => {
+app.get('/export/:schema', async (req, res) => {
     try {
-        const fields = Object.keys(Model.schema.obj);
+        const fields = Object.keys(Models[req.params["schema"]].schema.obj);
         const opts = { fields };
         const json2csv = new Parser(opts);
-        const allLogs = await Model.find({});
+        const allLogs = await Models[req.params["schema"]].find({});
 
         let data = json2csv.parse(allLogs);
         res.attachment('logging_data.csv');
@@ -104,9 +104,9 @@ app.get('/export', async (req, res) => {
     }
 });
 
-app.get('/schema', async (req, res) => {
+app.get('/schema/:model', async (req, res) => {
     try {
-        const fields = Object.keys(Model.schema.obj);
+        const fields = Object.keys(Models[req.params["model"]].schema.obj);
         const results = { 
             'results': fields
           };
