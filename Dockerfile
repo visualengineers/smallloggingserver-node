@@ -1,6 +1,5 @@
 FROM node:latest
 
-ARG USE_MODEL
 ARG ENV
 
 # Create app directory
@@ -17,10 +16,6 @@ RUN npm install --omit=dev
 
 # Bundle app source
 COPY . .
-
-# Use customized model for logging events
-RUN rm ./models/model.json
-RUN mv ./models/model.${USE_MODEL}.json ./models/model.json
 
 EXPOSE 3000
 CMD [ "npm", "start" ]

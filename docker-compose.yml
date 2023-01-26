@@ -4,10 +4,8 @@ services:
     build: 
       context: .
       args:
-        - USE_MODEL=${USE_MODEL}
         - ENV=${ENV}
     environment:
-      - USE_MODEL=${USE_MODEL}
       - ENV=${ENV}
       - ACCESS_TOKEN=${ACCESS_TOKEN}
     ports:
