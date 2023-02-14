@@ -13,8 +13,18 @@ services:
     links:
       - mongodb
     restart: always
+    healthcheck:
+      test: curl --fail -s http://localhost:3000/schema/config || exit 1
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
   mongodb:
     image: mongo:latest
     expose:
       - "27017"
     restart: always
+    healthcheck:
+      test: ["CMD","mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 5
