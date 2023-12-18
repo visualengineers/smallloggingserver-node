@@ -27,7 +27,7 @@ mongoose.connect(dbUrl, {
 
 // Configure CORS options
 const corsOptions = {
-    origin: ['http://itv21.informatik.htw-dresden.de:3000/', 'http://localhost:3000'],
+    origin: ['http://itv21.informatik.htw-dresden.de:3000', 'http://localhost:3000', 'http://localhost:4210', 'http://itv21.informatik.htw-dresden.de:4210'],
     allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'Authorization']
 };
 
@@ -66,7 +66,7 @@ app.post('/log/:schema', expressAccessToken,
         // Save the event log to the database
         eventLog.save()
             .then(() => {
-                res.send('Event data logged')
+                res.send('{ "msg": "Event data logged" }')
             })
             .catch(err => {
                 res.status(500).send(err)

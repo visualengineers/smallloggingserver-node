@@ -1,0 +1,57 @@
+{
+    "testOrder": 123,
+    "colorOrder": 123,
+    "Datenschutzerklaerung" : true,       
+    "LastName" : "Nachname",               
+    "FirstName": "Vorname",                 
+    "Alter"    : 23,                      
+    "E-Mail"   : "E-Mail",                  
+    "Arbeit"   : "Arbeit",                 
+    "BeeinträchtigungSehen" :  true,     
+    "AntwortBeeinträchtigung": "Brille",   
+    "RatingStress": 10,                  
+    "Schlaf": true,                     
+    "AntwortSchlaf": "Krank",
+
+
+    "reise_most" : "Name",
+    "reise_never_africa": "Name",
+    "reisen_most_continent": "Name",
+    "reisen_never_Asia" : "Name",
+    "reisen_moreThan_america": "Name",
+
+    "book_most" : "Name",
+    "book_noSachbuch" : "Name",
+    "book_mostGenre" : "Name",
+    "book_leastKrimi" : "Name",
+    "book_mostSachbuch" : "Name",
+
+    "music_most" : "Name",
+    "music_noTechno" : "Name",
+    "music_mostGenre" : "Name",
+    "music_mostRock" : "Name",
+    "music_lessPop" : "Name"
+
+    
+
+
+    
+
+
+
+
+    
+
+
+
+
+
+
+
+
+   
+
+
+
+}
+
