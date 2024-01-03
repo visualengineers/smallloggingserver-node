@@ -1,6 +1,10 @@
 {
     "testOrder": 123,
     "colorOrder": 123,
+    "Lieblingsfarbe": "rgb(89, 53, 140)",
+    "NoLieblingsFarbe1": "rgb(89, 53, 140)",
+    "NoLieblingsFarbe2": "rgb(242, 146, 0)", 
+    "duration":"0:38",
     "Datenschutzerklaerung" : true,       
     "LastName" : "Nachname",               
     "FirstName": "Vorname",                 
@@ -30,28 +34,47 @@
     "music_noTechno" : "Name",
     "music_mostGenre" : "Name",
     "music_mostRock" : "Name",
-    "music_lessPop" : "Name"
+    "music_lessPop" : "Name",
 
-    
+    "LastName2" : "Name",
+    "FirstName2" : "Name",
+    "E-Mail_2" : "E-Mail",
+    "answ_allg_stories" : "comment",
+    "bool_allg_names" : true,
+    "answ_allg_names" : "text",
+    "allg_2" : "comment",
 
+    "bool_music_mostSong": true,
+    "answ_music_mostSong": "text",
+    "bool_music_noTechno": true,
+    "answ_music_noTechno": "text",
+    "bool_music_mostGenre": true,
+    "answ_music_mostGenre": "text",
+    "bool_music_mostRock" : true,
+    "ans_music_mostRock" : "text",
+    "bool_music_leastPop" : true,
+    "answ_music_leastPop" : "text",
 
-    
+    "bool_reisen_most" : true,
+    "answ_reisen_most" : "text",
+    "bool_reisen_neverAfrica": true,
+    "answ_reisen_neverAfrica" : "text",
+    "bool_reisen_mostContinent" : true,
+    "answ_reisen_mostContinent" : "text",
+    "bool_reisen_neverAsia" : true,
+    "answ_reisen_neverAsia" : "text",
+    "bool_reisen_more3NA" : true,
+    "answ_reisen_more3NA" : "text",
 
-
-
-
-    
-
-
-
-
-
-
-
-
-   
-
-
-
+    "bool_book_most" : true,
+    "answ_book_most" : "Text",
+    "bool_book_noSachbuch" : true,
+    "answ_book_noSachbuch" : "Text",
+    "bool_book_mostGenre"  :  true,
+    "answ_book_mostGenre" : "Text", 
+    "bool_book_leastKrimi" : true,
+    "answ_book_leastKrimi" : "Text",
+    "bool_book_mostSachbuch" :  true,
+    "answ_book_mostSachbuch" : "Text"
 }
 
