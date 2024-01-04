@@ -16,6 +16,7 @@
     "RatingStress": 10,                  
     "Schlaf": true,                     
     "AntwortSchlaf": "Krank",
+    "TimeStamp" : "04.01.2024",
 
 
     "reise_most" : "Name",
