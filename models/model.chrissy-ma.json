@@ -18,9 +18,8 @@
     "AntwortSchlaf": "Krank",
     "TimeStamp" : "04.01.2024",
 
-
-    "reise_most" : "Name",
-    "reise_never_africa": "Name",
+    "reisen_most" : "Name",
+    "reisen_never_afrika": "Name",
     "reisen_most_continent": "Name",
     "reisen_never_Asia" : "Name",
     "reisen_moreThan_america": "Name",
