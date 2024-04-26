@@ -1,9 +1,9 @@
 {
     "teilnehmerID": "1",
-    "timestamp": "31.03.2024 12:00:00",
+    "timestamp": 123,
     "filePaths": "0123456789",
-    "event": "1",
-    "task": "2",
+    "event": 1,
+    "task": 2,
 
     "diagramm": "1",
     "begriff": "dünn",

@@ -77,6 +77,14 @@ git clone https://github.com/visualengineers/smallloggingserver-node.git
 ENV="production" ACCESS_TOKEN="your_token" docker-compose up -d --build
 ```
 
+For Powershell use:
+
+```powershell
+$env:ACCESS_TOKEN='123'
+$env:ENV='production'
+docker-compose up -d --build
+```
+
 ## Enter running MongoDB container to access and delete data
 
 Run Mongo shell in your container:
@@ -95,4 +103,11 @@ db.yourschema.find()
 db['<yourschema>'].find()
 db.yourschema.deleteMany({})
 exit
+```
+
+To reset and delete all schemas do
+
+```mongodb
+use eventLogs
+db.dropDatabase();
 ```
