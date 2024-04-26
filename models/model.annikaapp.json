@@ -1,0 +1,15 @@
+{
+    "teilnehmerID": "1",
+    "timestamp": "31.03.2024 12:00:00",
+    "filePaths": "0123456789",
+    "event": "1",
+    "task": "2",
+
+    "diagramm": "1",
+    "begriff": "dünn",
+    "bv_erfreulich": 1,
+    "bv_sympathisch": 1,
+    "bv_angenehm": 1,
+    "bv_nett": 1,
+    "bv_ansprechend": 1
+}
