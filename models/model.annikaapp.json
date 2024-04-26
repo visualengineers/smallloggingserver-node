@@ -1,11 +1,11 @@
 {
-    "teilnehmerID": "1",
+    "teilnehmerID": "ID1",
     "timestamp": 123,
     "filePaths": "0123456789",
     "event": 1,
     "task": 2,
 
-    "diagramm": "1",
+    "diagramm": "D1",
     "begriff": "dünn",
     "bv_erfreulich": 1,
     "bv_sympathisch": 1,
