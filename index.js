@@ -27,7 +27,14 @@ mongoose.connect(dbUrl, {
 
 // Configure CORS options
 const corsOptions = {
-    origin: ['http://itv21.informatik.htw-dresden.de:3000', 'http://localhost:4200', 'http://localhost:3000', 'http://localhost:4220', 'http://localhost:4210', 'http://itv21.informatik.htw-dresden.de:4210', 'http://itv21.informatik.htw-dresden.de:4220'],
+    origin: ['http://itv21.informatik.htw-dresden.de:3000', 
+             'http://localhost:4200',
+             'http://localhost:3000',
+             'http://localhost:4220',
+             'http://localhost:4210',
+             'http://itv21.informatik.htw-dresden.de:4210',
+             'http://itv21.informatik.htw-dresden.de:4220',
+             'http://itv21.informatik.htw-dresden.de:4000'],
     allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'Authorization']
 };
 
