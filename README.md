@@ -74,7 +74,7 @@ Build and run with docker-compose and shut down node container, run app locally 
 
 ```bash
 git clone https://github.com/visualengineers/smallloggingserver-node.git
-ENV="production" ACCESS_TOKEN="your_token" docker-compose up -d --build
+ENV="production" ACCESS_TOKEN="your_token" docker compose up -d --build
 ```
 
 For Powershell use:
