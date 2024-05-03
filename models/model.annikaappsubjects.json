@@ -6,7 +6,7 @@
     "task": 1,
     "Datenschutzerkärung": true,
     "Alter": 1,
-    "Geschlecht": "Item 1",
+    "Geschlecht": "string",
     "Tätigkeit": "Student:in",
     "InteresseUmwelt": "null"
 }
